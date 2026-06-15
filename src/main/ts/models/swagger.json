@@ -1,0 +1,325 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Passer Rating API",
+    "version": "1.0.0",
+    "description": "Passer Rating API with Swagger documentation"
+  },
+  "definitions": {
+    "RatingItem": {
+      "type": "object",
+      "properties": {
+        "qb_name_f": {
+          "type": "string"
+        },
+        "qb_name_l": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "attempts": {
+          "type": "integer"
+        },
+        "completions": {
+          "type": "integer"
+        },
+        "yards": {
+          "type": "integer"
+        },
+        "touchdowns": {
+          "type": "integer"
+        },
+        "interceptions": {
+          "type": "integer"
+        }
+      }
+    },
+    "ArrayOfRatingItems": {
+      "type": "array",
+      "items": {
+        "": "#/definitions/RatingItem"
+      }
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "servers": [
+          {
+            "url": "http://localhost:3000"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "success": {
+                  "code": 200,
+                  "data": null,
+                  "message": "API Healthy"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rating": {
+      "post": {
+        "summary": "Create Rating",
+        "servers": [
+          {
+            "url": "http://localhost:8080/api"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "ref": "#/definitions/RatingItem",
+                "required": [
+                  "qb_name_f",
+                  "qb_name_l",
+                  "team",
+                  "attempts",
+                  "completions",
+                  "yards",
+                  "touchdowns",
+                  "interceptions"
+                ]
+              },
+              "example": {
+                "qb_name_f": "Tua",
+                "qb_name_l": "Tagavailoa",
+                "team": "2025 Miami Dolphins",
+                "attempts": 384,
+                "completions": 260,
+                "yards": 2660,
+                "touchdowns": 20,
+                "interceptions": 15
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/rating/{id}": {
+      "get": {
+        "summary": "Get rating by id",
+        "servers": [
+          {
+            "url": "http://localhost:8080/api"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the rating",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 42
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rating retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "ref": "#/definitions/RatingItem"
+                },
+                "example": {
+                  "id": 2,
+                  "qb_name_f": "Quinn",
+                  "qb_name_l": "Ewers",
+                  "team": "2025 Miami Dolphins",
+                  "attempts": 83,
+                  "completions": 55,
+                  "yards": 622,
+                  "touchdowns": 3,
+                  "interceptions": 3
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Rating not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update rating by id",
+        "servers": [
+          {
+            "url": "http://localhost:8080/api"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the rating",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 42
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "ref": "#/definitions/RatingItem",
+                "required": [
+                  "qb_name_f",
+                  "qb_name_l",
+                  "team",
+                  "attempts",
+                  "completions",
+                  "yards",
+                  "touchdowns",
+                  "interceptions"
+                ]
+              },
+              "example": {
+                "qb_name_f": "Aaron",
+                "qb_name_l": "Rodgers",
+                "team": "2025 Pittsburgh Steelers",
+                "attempts": 521,
+                "completions": 344,
+                "yards": 3468,
+                "touchdowns": 24,
+                "interceptions": 8
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "404": {
+            "description": "Rating not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete rating by id",
+        "servers": [
+          {
+            "url": "http://localhost:8080/api"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier of the rating",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 42
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Rating not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "code": {
+                    "type": "integer"
+                  },
+                  "data": {
+                    "type": null
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "req": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "code": 404,
+                  "data": null,
+                  "message": "Not Found",
+                  "req": "/api/rating/42"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ratings": {
+      "options": {
+        "summary": "Count of ratings",
+        "servers": [
+          {
+            "url": "http://localhost:8080/api"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "code":200,
+                  "data":{
+                    "count": {
+                      "type": "integer"
+                    }
+                  },
+                  "message": "OK"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all ratings",
+        "servers": [
+          {
+            "url": "http://localhost:8080/api"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ratings retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "": "#/definitions/ArrayOfRatingItems"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

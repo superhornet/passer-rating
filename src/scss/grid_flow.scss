@@ -1,0 +1,158 @@
+@use "sass:math";
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : Apr 28, 2014, 11:52:45 AM
+    Author     : cking
+*/
+$bp_mobile: 720px;
+$bp_tablet: 960px;
+$bp_desktop: 1200px;
+$column_no: 60;
+@media screen and (max-width: $bp_mobile){
+	.container_full{
+        box-sizing: border-box;
+        margin-left: 10px;
+		margin-right: 10px;
+		//global
+		@for $i from 1 through $column_no{
+			.grid-#{$i}_mobile{
+				width: $i * math.div(100%, $column_no) - 2%;
+			}
+		}
+		//extra space
+		@for $i from 1 through ($column_no - 1){
+			.prefix_#{$i}_mobile{
+				padding-left: $i * math.div(100%, $column_no);
+			}
+		}
+		//extra space
+		@for $i from 1 through ($column_no - 1){
+			.suffix_#{$i}_mobile{
+				padding-right: $i * math.div(100%, $column_no);
+			}
+		}
+		//push space
+		@for $i from 1 through ($column_no - 1){
+			.push_#{$i}_mobile{
+				left: $i * math.div(100%, $column_no);
+			}
+		}
+		//pull space
+		@for $i from 1 through ($column_no - 1){
+			.pull-#{$i}{
+				left: $i *-1 * math.div(100%, $column_no);
+			}
+		}
+	}
+	@for $i from 1 through $column_no{
+		.grid-#{$i}_mobile{
+			display:inline;
+			position:relative;
+			margin-left: 1%;
+			margin-right: 1%;
+		}
+	}
+}
+@media screen and (min-width: $bp_mobile) and (max-width: $bp_tablet){
+	.container_full{
+        box-sizing: border-box;
+		margin-left: 10px;
+		margin-right: 10px;
+		//global
+		@for $i from 1 through $column_no{
+			.grid-#{$i}_tablet{
+				width: $i * math.div(100%, $column_no) - 2%;
+			}
+		}
+		//extra space
+		@for $i from 1 through ($column_no - 1){
+			.prefix_#{$i}_tablet{
+				padding-left: $i * math.div(100%, $column_no);
+			}
+		}
+		//extra space
+		@for $i from 1 through ($column_no - 1){
+			.suffix_#{$i}_tablet{
+				padding-right: $i * math.div(100%, $column_no);
+			}
+		}
+		//push space
+		@for $i from 1 through ($column_no - 1){
+			.push_#{$i}_tablet{
+				left: $i * math.div(100%, $column_no);
+			}
+		}
+		//pull space
+		@for $i from 1 through ($column_no - 1){
+			.pull-#{$i}_tablet{
+				left: $i *-1 * math.div(100%, $column_no);
+			}
+		}
+	}
+	@for $i from 1 through $column_no{
+		.grid-#{$i}_tablet{
+			display:inline;
+			position:relative;
+			margin-left: 1%;
+			margin-right: 1%;
+		}
+	}
+}
+@media screen and (min-width: $bp_desktop){
+	.container_full{
+		box-sizing: border-box;
+		margin-left: 10px;
+		margin-right: 10px;
+		//global
+		@for $i from 1 through $column_no{
+			.grid-#{$i}_desktop{
+				width: $i * math.div(100%, $column_no) - 2%;
+			}
+		}
+		//extra space
+		@for $i from 1 through ($column_no - 1){
+			.prefix_#{$i}_desktop{
+				padding-left: $i * math.div(100%, $column_no);
+			}
+		}
+		//extra space
+		@for $i from 1 through ($column_no - 1){
+			.suffix_#{$i}_desktop{
+				padding-right: $i * math.div(100%, $column_no);
+			}
+		}
+		//push space
+		@for $i from 1 through ($column_no - 1){
+			.push_#{$i}_desktop{
+				left: $i * math.div(100%, $column_no);
+			}
+		}
+		//pull space
+		@for $i from 1 through ($column_no - 1){
+			.pull-#{$i}_desktop{
+				left: $i *-1 * math.div(100%, $column_no);
+			}
+		}
+	}
+	@for $i from 1 through $column_no{
+		.grid-#{$i}_desktop{
+			display:inline;
+			position:relative;
+			margin-left: 1%;
+			margin-right: 1%;
+		}
+	}
+}
+@for $i from 1 through $column_no{
+	.grid-#{$i}{
+		display:inline;
+		position:relative;
+		margin-left: 1%;
+		margin-right: 1%;
+	}
+}
+
