@@ -1,0 +1,100 @@
+doctype html
+html(lang="en")
+  head
+    title #{title}
+    meta(charset='UTF-8')
+    meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+    link( href='css/webfonts.css', rel='stylesheet', type='text/css')
+    link( href='css/style.css', rel='stylesheet', type='text/css' )
+    link( href='css/grid_flow.css', rel='stylesheet', type='text/css')
+    script(type='javascript', src='js/AntiPollution.js')
+    script(type='javascript', src='js/ScrollBarHandler.js')
+    script(type='javascript', src='js/hideaddressbar.js')
+  body(lang='en')
+    #root
+      header#container-header
+        h1 #{title}
+        h2 Passer Rating
+      #container-nav
+        nav
+          ul
+            li
+              a(href="/") Home
+            li
+              a(href="/about") About
+      #container-content
+        #blanket
+        #confirm
+          h1 Delete
+          div
+            h4#deletion Delete this?
+            button#confirmYes.yes Yes
+            button#confirmNo.no No
+        #popup
+          form#playerForm
+            h1 Player
+              span#formClose.control.close r
+            div
+              label(for="qb_name_f") First Name
+              input#qb_name_f(title="First Name", type="text", tabindex="1")
+            div
+              label(for="qb_name_l") Last Name:
+              input#qb_name_l(title="Last Name", type="text" tabindex="2")
+            div
+              label(for="team") Team:
+              input#team(title="Team", type="text", tabindex="3")
+            div
+              label(for="attempts") Attempts:
+              input#attempts(title="Attempts", type="number", tabindex="4")
+            div
+              label(for="completions") Completions:
+              input#completions(title="Completions", type="number", tabindex="5")
+            div
+              label(for="yards") Yards:
+              input#yards(title="Yards", type="number", tabindex="6")
+            div
+              label(for="touchdowns") Touchdowns:
+              input#touchdowns(title="Touchdowns", type="number", tabindex="7")
+            div
+              label(for="interceptions") Interceptions:
+              input#interceptions(title="Interceptions", type="number", tabindex="8")
+            div
+              input#ratingID(title="ratingID", type="hidden")
+            div
+              label(for="playerFormAct")
+              button#playerFormAct(title="" type="button" tabindex="9") Add
+        section#notification
+        section
+          table#ratings.container_full
+            colgroup
+              col.grid-24_desktop
+              col.grid-24_desktop
+              col.grid-12_desktop
+            thead
+              tr
+                th Name
+                th Team
+                th Rating
+            tbody#data
+            tfoot
+              tr
+                td
+                  span Items per page
+                  select#pageSize(title="Items per page")
+                    option 5
+                    option 20
+                td
+                  button#addRating.control.plus Add
+                td
+                  span#btnRev.control.direction.back
+                  span#paging 1
+                  span#btnFwd.control.direction.forward.disabled
+
+        section
+          div
+            span.logo &vellip;
+      footer#container-footer
+        p Powered by Molybdenum and 💜
+        p &copy; #{new Date().getUTCFullYear()} Caleb King.
+    script(type='module', src='js/index.js')
+
