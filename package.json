@@ -1,0 +1,68 @@
+{
+  "name": "passer-rating",
+  "version": "1.0.0",
+  "description": "Demo application for NFL/NCAA Passer Rating",
+  "main": "dist/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "typedoc --tsconfig tsconfig.server.json --plugin typedoc-plugin-rename-defaults --entryPoints src/main/ts/index.ts",
+    "clean": "node clean.js",
+    "copy-folder": "node copyFolder.js",
+    "lint": "eslint . --ext .ts",
+    "tsc:server": "node ./node_modules/typescript/bin/tsc -p tsconfig.server.json",
+    "tsc:client": "node ./node_modules/typescript/bin/tsc -p tsconfig.frontend.json",
+    "build": "node build.js",
+    "build:sass": "sass src/scss/:dist/public/css/ --no-source-map",
+    "packageFE": "node buildFrontend.js",
+    "dev:start": "npm-run-all clean lint tsc:server tsc:client copy-folder build:sass start",
+    "dev": "nodemon --watch src -e ts,scss,pug --exec npm run dev:start",
+    "devC": "concurrently \"npm run package\" \"npm run build\"",
+    "package": "npm-run-all clean copy-html packageFE build:sass",
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superhornet/passer-rating.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/superhornet/passer-rating/issues"
+  },
+  "homepage": "https://github.com/superhornet/passer-rating#readme",
+  "overrides": {
+    "@cucumber/cucumber": "^11.2.0",
+    "fast-xml-parser": "latest",
+    "mockery": "latest",
+    "tmp": "^0.2.3",
+    "uuid": "^14"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "swagger-ui-express": "^5.0.1",
+    "pug": "^3.0.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.2",
+    "@typescript-eslint/parser": "^8.59.2",
+    "@types/swagger-ui-express": "^4.1.8",
+    "concurrently": "^9.2.1",
+    "esbuild": "^0.28.0",
+    "eslint": "^10.3.0",
+    "nodemon": "^3.1.14",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.99.0",
+    "ts-node": "^10.9.2",
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-rename-defaults": "^0.7.3",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.59.2"
+  }
+}
+

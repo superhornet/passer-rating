@@ -1,0 +1,26 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "rootDir": "src/browser/ts",
+        "outDir": "./dist/public/js",
+        "module": "esnext",
+        "target": "esnext",
+        "lib": [
+            "dom",
+            "ESNext"
+        ],
+        "types": [
+            "@types/node"
+        ],
+        "sourceMap": false,
+        "declaration": false,
+        "declarationMap": false,
+        "allowSyntheticDefaultImports": true,
+    },
+    "include": [
+        "src/browser/**/*.ts"
+    ],
+    "exclude": [
+        "tests/feature"
+    ]
+}

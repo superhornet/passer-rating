@@ -1,3 +1,7 @@
+data
+package-lock.json
+assets
+.vscode
 # Logs
 logs
 *.log
