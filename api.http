@@ -1,0 +1,102 @@
+
+POST http://localhost:8080/api/rating HTTP/1.1
+Content-Type: application/json
+
+{
+    "qb_name_f":"Russell",
+    "qb_name_l":"Wilson",
+    "team":"2024 Pittsburgh Steelers",
+    "attempts":336,
+    "completions":214,
+    "yards":2482,
+    "touchdowns":16,
+    "interceptions":5
+}
+
+###
+GET http://localhost:8080/api/ratings HTTP/1.1
+
+###
+GET http://localhost:8080/api/rating/4 HTTP/1.1
+
+###
+PUT http://localhost:8080/api/rating/7 HTTP/1.1
+Content-Type: application/json
+
+{
+    "qb_name_f":"Michael",
+    "qb_name_l":"Penix Jr.",
+    "team":"2025 Atlanta Falcons",
+    "attempts":276,
+    "completions":166,
+    "yards":1982,
+    "touchdowns":9,
+    "interceptions":3
+}
+
+###
+PUT http://localhost:8080/api/rating/8 HTTP/1.1
+Content-Type: application/json
+
+{
+    "qb_name_f":"Kirk",
+    "qb_name_l":"Cousins",
+    "team":"2025 Atlanta Falcons",
+    "attempts":269,
+    "completions":166,
+    "yards":1721,
+    "touchdowns":10,
+    "interceptions":5
+}
+
+###
+PUT http://localhost:8080/api/rating/9 HTTP/1.1
+Content-Type: application/json
+
+{
+    "qb_name_f":"Carson",
+    "qb_name_l":"Wentz",
+    "team":"2025 Minnesota Vikings",
+    "attempts":110,
+    "completions":169,
+    "yards":1216,
+    "touchdowns":6,
+    "interceptions":5
+}
+
+###
+POST http://localhost:8080/api/rating HTTP/1.1
+Content-Type: application/json
+
+{
+    "qb_name_f":"J. J.",
+    "qb_name_l":"McCarthy",
+    "team":"2025 Minnesota Vikings",
+    "attempts":140,
+    "completions":243,
+    "yards":1632,
+    "touchdowns":11,
+    "interceptions":12
+}
+
+###
+PUT http://localhost:8080/api/rating/12 HTTP/1.1
+Content-Type: application/json
+
+{
+        "id": 12,
+        "qb_name_f": "Dan",
+        "qb_name_l": "Marino",
+        "team": "1998 Miami Dolphins",
+        "attempts": 537,
+        "completions": 310,
+        "yards": 3497,
+        "touchdowns": 23,
+        "interceptions": 15
+}
+
+###
+OPTIONS http://localhost:8080/api/ratings HTTP/1.1
+
+###
+GET http://localhost:8080/api/ratings?page=1&pagesize=5 HTTP/1.1
